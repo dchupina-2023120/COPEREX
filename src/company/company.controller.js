@@ -37,6 +37,51 @@ export const getEmpresasSortedZA = async (req, res) => {
     }
 };
 
+
+// Filtrar empresas por trayectoria (orden descendente: mayor a menor)
+export const getEmpresasByTrayectoria = async (req, res) => {
+    try {
+        const { trayectoria } = req.query;
+        let filtro = {};
+
+        if (trayectoria) filtro.trayectoria = { $gte: parseInt(trayectoria) };
+
+        const empresas = await Empresa.find(filtro).sort({ trayectoria: -1 }); // Orden descendente
+        res.json(empresas);
+    } catch (error) {
+        res.status(500).json({ message: "Error al filtrar empresas por trayectoria", error });
+    }
+};
+
+// Filtrar empresas por categoría
+export const getEmpresasByCategoria = async (req, res) => {
+    try {
+        const { categoria } = req.query;
+        let filtro = {};
+
+        if (categoria) filtro.categoria = categoria;
+
+        const empresas = await Empresa.find(filtro);
+        res.json(empresas);
+    } catch (error) {
+        res.status(500).json({ message: "Error al filtrar empresas por categoría", error });
+    }
+};
+
+
+// Obtener una empresa por ID
+export const getEmpresaById = async (req, res) => {
+    try {
+        const empresa = await Empresa.findById(req.params.id);
+        if (!empresa) return res.status(404).json({ message: "Empresa no encontrada" });
+        res.status(200).json(empresa);
+    } catch (error) {
+        res.status(500).json({ message: "Error al obtener empresa", error });
+    }
+};
+
+
+
 // Actualizar empresa
 export const updateEmpresa = async (req, res) => {
     try {

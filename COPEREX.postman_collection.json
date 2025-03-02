@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "35515357-fae6-4110-8db9-b8ba6598743f",
+		"_postman_id": "891983ca-0139-4366-b57a-1c2f02f63648",
 		"name": "COPEREX",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37956994"
@@ -94,7 +94,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Tech Solutions\",\r\n    \"descripcion\": \"Empresa de tecnología e innovación\",\r\n    \"impacto\": \"Alto\",\r\n    \"trayectoria\": 10,\r\n    \"categoria\": \"Tecnología\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Tech Solutions\",\r\n    \"descripcion\": \"Empresa de tecnología e innovación\",\r\n    \"impacto\": \"Alto\",\r\n    \"trayectoria\": 10,\r\n    \"categoria\": \"Tecnología\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -150,6 +150,89 @@
 								"api",
 								"company",
 								"ordenadas-za"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Por trayectorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2636/api/company/por-trayectoria",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"company",
+								"por-trayectoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Por categoria",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/company/67c4079617a6de9640660347",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"company",
+								"67c4079617a6de9640660347"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditarCompany",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"InnovaTech\",\r\n    \"descripcion\": \"Empresa líder en soluciones digitales y desarrollo de software\",\r\n    \"impacto\": \"Muy Alto\",\r\n    \"trayectoria\": 15,\r\n    \"categoria\": \"Desarrollo de Software\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2636/api/company/67c3c3c3896fb4d8e14e6f9e",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"company",
+								"67c3c3c3896fb4d8e14e6f9e"
 							]
 						}
 					},
