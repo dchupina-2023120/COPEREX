@@ -3,22 +3,6 @@ import { checkPassword, encrypt } from '../../utils/encrypt.js'
 import { generateJwt } from '../../utils/jwt.js'
 
 
-//Registrar
-export const register = async(req, res)=>{
-    try {
-        let data = req.body
-        let user = new User(data)
-        user.password = await encrypt(user.password)
-        user.role = 'ADMIN'
-        await user.save()
-
-        return res.send({message: `Registrado con exito , se puede registrar con nombre de usuario: ${user.username}`})
-    } catch (err) {
-        console.error(err)
-        return res.status(500).send({message: 'Error general con el registro del usuario', err})
-    }
-}
-
 
 export const login = async(req, res)=>{
     try {
@@ -74,7 +58,7 @@ const agregarUsuarioPorDefecto = async () => {
                 username: 'dchupina ',
                 email: `${process.env.ADMIN_EMAIL}`,
                 password: await encrypt(`${process.env.ADMIN_PASSWORD}`, 12),
-                role: "ADMIN",
+                role: "ADMIN"
             })
  
             await usuarioAdmin.save();

@@ -11,6 +11,7 @@ import helmet from 'helmet' //Seguridad para HTTP
 import cors from 'cors' //Acceso al API
 
 import userRoutes from "../src/user/user.routers.js"
+import companyRoutes from "../src/company/company.routes.js"
 
 import dotenv from 'dotenv';
 import { limiter } from '../middleware/rate.limit.js'
@@ -30,6 +31,7 @@ const configs = (app)=>{
 //  Carga de rutas
 const routes = (app) => {
     app.use('/api/users', userRoutes); // Rutas de usuarios
+    app.use('/api/company', companyRoutes )
    
 };
 
